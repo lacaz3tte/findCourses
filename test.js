@@ -25,11 +25,29 @@ const pickUpCourses = (courses, selector) => {
         ((e.prices[0] <= selector[0]) && (e.prices[1] >= selector[0])) ||
         ((e.prices[0] <= selector[1]) && (e.prices[1] >= selector[1]))
     )
-    filter.map(e=>suitableCourses.push(e.name))
+
+    const sortFunc = (a,b) => {
+        if(a.prices[0]>b.prices[0]){
+            return 1
+        }
+        if(a.prices[0]<b.prices[0]){
+            return -1
+        }
+        if(a.prices[0]===b.prices[0]){
+            return 0
+        }
+    }
+
+    const sorted = filter.sort(sortFunc)
+
+    console.log(sorted)
+
+    sorted.map(e=>suitableCourses.push(e.name))
     return suitableCourses
 }
 
 console.log(pickUpCourses(courses,requiredRange1))
 console.log(pickUpCourses(courses,requiredRange2))
 console.log(pickUpCourses(courses,requiredRange3))
+
 
