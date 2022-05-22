@@ -40,7 +40,6 @@ const pickUpCourses = (courses, selector) => {
 
     const sorted = filter.sort(sortFunc)
 
-
     sorted.map(e=>suitableCourses.push(e.name))
     return suitableCourses
 }
